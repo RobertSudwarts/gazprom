@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block scrip %}
+  <link href="http://cdn.pydata.org/bokeh/release/bokeh-0.9.0.min.css" rel="stylesheet" type="text/css">
+  <script src="http://cdn.pydata.org/bokeh/release/bokeh-0.9.0.min.js"> </script>
+
+  {{ chart_script | safe }}
+{% endblock %}
+
+{% block body %}
+
+  <div class="row">
+    <div class="col-md-6">
+      <h3>current weather in: {{ current_weather['name'] }} </h3>
+    </div>
+    <div class="col-md-6">
+      <img src="{{ current_icon }}" alt=""> {{ current_weather['weather'][0]['description'] }}
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-6">
+      <table class="table table-striped">
+        <tr>
+          <td>temp</td>
+          <td>{{ current_weather['main']['temp'] }}</td>
+        </tr>
+        <tr>
+          <td>max</td>
+          <td>{{ current_weather['main']['temp_max'] }}</td>
+        </tr>
+        <tr>
+          <td>min</td>
+          <td>{{ current_weather['main']['temp_min'] }}</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="col-md-6">
+
+      <table class="table table-striped">
+        <tr>
+          <td>sunrise</td>
+          <td>{{ sunup }}</td>
+        </tr>
+        <tr>
+          <td>sunset</td>
+          <td>{{ sundown }}</td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-6">
+      <h3> analysis of forecast temperatures </h3>
+      {{ forecast_temp_descr | safe }}
+    </div>
+
+    <div class="col-md-6">
+      {{ chart_div | safe }}
+    </div>
+
+  <div class="row">
+    <div class="col-md-12">
+    {{ model | safe }}
+    </div>
+  </div>
+
+
+  </div>
+
+{% endblock %}
