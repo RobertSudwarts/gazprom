@@ -1,28 +1,44 @@
+tasks
+--------
 
+  * extract min, max and average temperature for single day
+  * retry decorator for HTTP function
+  * store data appropriately
+  * apply above to forecast series
+  * analysis of data set
+  * tests for each step of the above
 
-London weather model
------------------------
+Model
+-------
 
-tasks:
+The model comprises N distinct parts
 
-    * extract min, max and average temperature for single day - done
-    * retry decorator for HTTP function - done(!)
-    * store data appropriately
-        -- data could be stored in numerous formats
-           (sqlite, text file, pickled etc) but as the datatype
-           returned is JSON, MongoDB is an obvious candidate
-    * apply above to forecast series
-    * analysis of data set
-    * tests for each step of the above
+  * core functionality to request (REST) data from openweathermaps
+  * additional (REST) functionality to return timezones for UTC/date
+    conversion from Geonames
+  * A client/server model to store data in a MongoDB
+  * A flask web application to display, chart and analyse current
+    and forecast weather
 
-So we're going to have a listener -- problem is that there could
-be multiple locations...
-Are you actually going to *use* the stored data???
+todos
+^^^^^^
+The fullest possible model (for multiple users) would be for the web
+application to draw its data directly from the database.  The Mongo
+client/server modules (stream_current_weather.py & tail_current_weather.py)
+use objects which could be extended, parameterised and threaded to query and
+store data from multiple (even all!) locations available
+(see http://openweathermap.org/help/city_list.txt for the full list)
 
-Capped(!!)
-collections
-  current_location
-  forecast_location
+The flask web application draws its data directly via HTTP request -- this is
+only for simplicity's sake.
+
+Once the flask server is running (localhost:5000) the default is to query
+London (using metric units) but the following will also work eg:
+
+      localhost:5000
+      localhost:5000/?city=Paris,FR
+      http://localhost:5000/?city=Paris,FR&units=imperial
+      http://localhost:5000/?city=Paris,FR&units=imperial
 
 
 

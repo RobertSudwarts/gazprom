@@ -3,14 +3,10 @@ from openweathermap_requests import *
 from geonames_requests import get_timezone
 
 from flask import Flask, render_template, request
-# from flask import Response, url_for
 from bokeh_chart import forecast_chart
 from utils import ts, localized_datetime
 
 app = Flask(__name__)
-
-UNITS = 'metric'
-#params = {'q': 'London', 'units': UNITS}
 
 
 def forecast_temperatures(params):
