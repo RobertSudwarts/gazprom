@@ -16,9 +16,11 @@ jsonschema=2.4.0=py27_0
 libsodium=0.4.5=0
 markupsafe=0.23=py27_0
 mistune=0.5.1=py27_1
+nose=1.3.7=py27_0
 numpy=1.9.2=py27_0
 openssl=1.0.1k=1
 pandas=0.16.1=np19py27_0
+patsy=0.3.0=np19py27_0
 pip=7.0.3=py27_0
 ptyprocess=0.4=py27_0
 pygments=2.0.2=py27_0
@@ -31,10 +33,12 @@ pyzmq=14.6.0=py27_0
 readline=6.2=2
 requests=2.7.0=py27_0
 requirements=0.1=py27_0
+scipy=0.15.1=np19py27_0
 setuptools=17.0=py27_0
 six=1.9.0=py27_0
 sqlite=3.8.4.1=1
 ssl_match_hostname=3.4.0.2=py27_0
+statsmodels=0.6.1=np19py27_0
 system=5.8=2
 terminado=0.5=py27_0
 tk=8.5.18=0

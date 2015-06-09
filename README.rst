@@ -11,14 +11,17 @@ tasks
 Model
 -------
 
-The model comprises N distinct parts
+The model comprises:
 
   * core functionality to request (REST) data from openweathermaps
   * additional (REST) functionality to return timezones for UTC/date
     conversion from Geonames
+  * unit tests
   * A client/server model to store data in a MongoDB
   * A flask web application to display, chart and analyse current
     and forecast weather
+
+note:  the unit tests use the nose package
 
 todos
 ^^^^^^
@@ -32,30 +35,30 @@ store data from multiple (even all!) locations available
 The flask web application draws its data directly via HTTP request -- this is
 only for simplicity's sake.
 
-Once the flask server is running (localhost:5000) the default is to query
-London (using metric units) but the following will also work eg:
+Once the flask server is running the default (ie http://localhost:5000) is to
+query London (using metric units) but the following parameters will also work:
 
-      localhost:5000
-      localhost:5000/?city=Paris,FR
-      http://localhost:5000/?city=Paris,FR&units=imperial
-      http://localhost:5000/?city=Paris,FR&units=imperial
-
+      * http://localhost:5000/?city=Paris,FR
+      * http://localhost:5000/?city=Rome,IT&units=imperial
+      * http://localhost:5000/?city=Mumbai,IN&units=kelvin
 
 
 Installation
 -------------
 
-Install new conda environment using the main requirements file
+$ git clone git@github.com:RobertSudwarts/gazprom.git
 
-$ git clone
+A conda-requirements.txt has been included in the repository so the following
+should work to create a new conda environment:
 
-$ cd weather...
+  $ conda create -n <env> --file conda-requirements.txt
 
-$ conda create -n <envname> --file conda-requirements.txt
+However, in case of difficulties the following should pretty much cover it:
 
-Install 'requirements' package from binstar
-conda install -c https://conda.binstar.org/rsudwarts requirements
+  $ conda create -n <env> bokeh numpy scipy pandas flask pymongo statsmodels nose
 
-or:
-
-pip install requirements
+.. warning::
+   I am aware of one package which is **not** available directly via conda
+   so `$ pip install retrying` will be required in addition.
+   I have created a binstar package of the retrying module but you may have
+   limited mileage with `conda install -c https://conda.binstar.org/yqe retrying`
