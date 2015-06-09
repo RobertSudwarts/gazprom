@@ -62,3 +62,16 @@ However, in case of difficulties the following should pretty much cover it:
    so `$ pip install retrying` will be required in addition.
    I have created a binstar package of the retrying module but you may have
    limited mileage with `conda install -c https://conda.binstar.org/yqe retrying`
+
+Running
+----------
+
+For the web application, simply:
+
+  (env) python flaskapp.py
+
+For the data model, two seperate shells/terminals are required,
+
+  (env) python stream_current_weather.py
+  and
+  (env) python tail_current_weather.py
