@@ -72,6 +72,6 @@ For the web application, simply:
 
 For the data model, two seperate shells/terminals are required,
 
-  (env) python stream_current_weather.py
-  and
-  (env) python tail_current_weather.py
+  * (env) python stream_current_weather.py
+  * followed by
+  * (env) python tail_current_weather.py
